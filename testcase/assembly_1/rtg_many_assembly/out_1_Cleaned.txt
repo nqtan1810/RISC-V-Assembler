@@ -1,0 +1,28 @@
+Main:
+addi    x17   x0   27
+addi    x25   x0   -72
+addi    x15   x0   37
+addi    x8   x0   14
+addi    x12   x0   3
+blt     x17   x25   Less_r
+bge     x17   x25   Bigger_r
+Less_r:
+sub     x7   x15   x8
+and     x26   x15   x8
+slt     x26   x26   x7
+srl     x26   x26   x12
+addi    x31   x0   3
+bne     x26   x31   Fail
+Bigger_r:
+or      x7   x15   x8
+xor     x26   x15   x8
+sltu     x26   x26   x7
+sra     x26   x26   x12
+addi    x31   x0   0
+bne     x26   x31   Fail
+Pass:
+addi    x1   x0   084
+jal     x0   End
+Fail:
+addi    x1   x0   070
+End:

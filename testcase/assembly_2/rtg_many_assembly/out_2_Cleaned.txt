@@ -1,0 +1,26 @@
+Main:
+addi    x14   x0   25
+addi    x27   x0   188
+addi    x28   x0   54
+bltu    x14   x27   Less_i
+bgeu    x14   x27   Bigger_i
+Less_i:
+addi    x4   x28   141
+andi    x11   x28   89
+add     x11   x11   x4
+srli    x11   x11   2
+addi    x12   x0   52
+bne     x11   x12   Fail
+Bigger_i:
+ori     x4   x28   50
+xori    x11   x28   183
+add     x11   x11   x4
+srai    x11   x11   4
+addi    x12   x0   11
+bne     x11   x12   Fail
+Pass:
+addi    x1   x0   084
+jal     x0   End
+Fail:
+addi    x1   x0   070
+End:

@@ -1,0 +1,31 @@
+Main:
+addi    x4   x0   4
+add     x21   x0   x0
+add     x12   x0   x0
+addi    x25   x0   20
+InArr:
+addi    x5   x0   20
+addi    x31   x0   0
+addi    x6   x0   12
+addi    x29   x0   12
+sb      x5   20  x25
+sb      x31   24  x25
+sb      x6   28  x25
+sb      x29   32  x25
+Loop:
+slli    x1   x12   2
+add     x3   x1   x25
+lb      x8   20  x3
+add     x21   x21   x8
+addi    x12   x12   1
+beq     x12   x4   Result
+jal     x0   Loop
+Result:
+addi    x30   x0   44
+bne     x30   x21   Fail
+Pass:
+addi    x1   x0   084
+jal     x0   End
+Fail:
+addi    x1   x0   070
+End:

@@ -1,0 +1,24 @@
+Main:
+addi    x27   x0   6
+addi    x4   x0   256
+add     x10   x0   x0
+addi    x19   x0   32
+Loop:
+slli    x2   x10   2
+add     x9  x2   x19
+lw      x30   36  x9
+add     x4   x4   x30
+addi    x10   x10   1
+bne     x10   x27   Loop
+Result:
+addi    x25   x0   256
+bne     x25   x4   Fail
+Pass:
+addi    x1   x0   084
+jal     x0   End
+Fail:
+addi    x1   x0   070
+End:
+jal     x0  End
+addi    x1   x0   666
+sw      x1  32 x0
